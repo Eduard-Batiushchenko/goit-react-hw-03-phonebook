@@ -22,8 +22,10 @@ class App extends Component {
 
   componentDidMount() {
     const contactsStringify = localStorage.getItem('contacts');
-    const contactsParse = JSON.parse(contactsStringify);
-    this.setState({ contacts: [...contactsParse] });
+    if (contactsStringify) {
+      const contactsParse = JSON.parse(contactsStringify);
+      this.setState({ contacts: [...contactsParse] });
+    }
   }
 
   deleteContact = id => {
